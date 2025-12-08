@@ -1,5 +1,6 @@
 package org.example.comparison;
 import org.example.AbstractNumericComparisonFilter;
+import org.example.visitor.FilterVisitor;
 
 public class isGreaterFilter extends AbstractNumericComparisonFilter {
 
@@ -15,5 +16,9 @@ public class isGreaterFilter extends AbstractNumericComparisonFilter {
     @Override
     protected String operatorSymbol() {
         return ">";
+    }
+    @Override
+    public <R> R accept(FilterVisitor<R> visitor) {
+        return visitor.visit(this);
     }
 }

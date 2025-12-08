@@ -1,5 +1,7 @@
 package org.example.comparison;
 import org.example.Filter;
+import org.example.visitor.FilterVisitor;
+
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -24,5 +26,9 @@ public class RegexFilter implements Filter {
     @Override
     public String toString() {
         return property + " = /" + pattern + "/";
+    }
+    @Override
+    public <R> R accept(FilterVisitor<R> visitor) {
+        return visitor.visit(this);
     }
 }

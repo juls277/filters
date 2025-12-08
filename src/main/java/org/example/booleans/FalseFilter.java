@@ -1,5 +1,6 @@
 package org.example.booleans;
 import org.example.Filter;
+import org.example.visitor.FilterVisitor;
 import java.util.Map;
 public class FalseFilter implements Filter {
     @Override
@@ -9,5 +10,10 @@ public class FalseFilter implements Filter {
     @Override
     public String toString() {
         return "false";
+    }
+
+    @Override
+    public <R> R accept(FilterVisitor<R> visitor) {
+        return visitor.visit(this);
     }
 }

@@ -1,6 +1,8 @@
 package org.example.logical;
 import org.example.Filter;
 import java.util.Map;
+import org.example.visitor.FilterVisitor;
+
 public class AndFilter implements Filter {
     private final Filter left;
     private final Filter right;
@@ -17,6 +19,14 @@ public class AndFilter implements Filter {
     public String toString() {
         return "(" + left.toString() + " AND " + right.toString() + ")";
     }
+
+    @Override
+    public <R> R accept(FilterVisitor<R> visitor) {
+        return visitor.visit(this);
+    }
+
+    public Filter getLeft() {return left;}
+    public Filter getRight() {return right;}
 
 }
 

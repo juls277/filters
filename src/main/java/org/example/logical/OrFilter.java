@@ -1,5 +1,7 @@
 package org.example.logical;
 import org.example.Filter;
+import org.example.visitor.FilterVisitor;
+
 import java.util.Map;
 public class OrFilter implements Filter{
     private final Filter left;
@@ -17,4 +19,11 @@ public class OrFilter implements Filter{
     public String toString() {
         return "(" + left.toString() + " OR " + right.toString() + ")";
     }
+    @Override
+    public <R> R accept(FilterVisitor<R> visitor) {
+        return visitor.visit(this);
+    }
+
+    public Filter getLeft() {return left;}
+    public Filter getRight() {return right;}
 }

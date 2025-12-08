@@ -1,5 +1,7 @@
 package org.example.comparison;
 import org.example.Filter;
+import org.example.visitor.FilterVisitor;
+
 import java.util.Map;
 
 public class isPresent implements Filter {
@@ -17,4 +19,9 @@ public class isPresent implements Filter {
     public String toString() {
         return "HAS(" + propertyName + ")";
     }
+    @Override
+    public <R> R accept(FilterVisitor<R> visitor) {
+        return visitor.visit(this);
+    }
+
 }

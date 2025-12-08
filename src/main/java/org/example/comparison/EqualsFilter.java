@@ -1,6 +1,7 @@
 package org.example.comparison;
 import java.util.Map;
 import org.example.Filter;
+import org.example.visitor.FilterVisitor;
 
 public class EqualsFilter implements Filter {
     private final String field;
@@ -22,4 +23,9 @@ public class EqualsFilter implements Filter {
     public String toString() {
         return field + " == \"" + value + "\"";
     }
+    @Override
+    public <R> R accept(FilterVisitor<R> visitor) {
+        return visitor.visit(this);
+    }
+
 }
