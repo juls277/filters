@@ -6,4 +6,8 @@ public class TrueFilter implements Filter {
     public boolean matches(Map<String, String> resource) {
         return true;
     }
+    @Override
+    public String toString() {
+        return "true";
+    }
 }

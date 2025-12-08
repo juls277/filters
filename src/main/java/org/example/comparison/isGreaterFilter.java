@@ -27,4 +27,9 @@ public class isGreaterFilter implements Filter {
             return false;
         }
     }
+    @Override
+    public String toString() {
+        return key + " > " + value;
+    }
+
 }

@@ -6,4 +6,8 @@ public class FalseFilter implements Filter {
     public boolean matches(Map<String, String> resource) {
         return false;
     }
+    @Override
+    public String toString() {
+        return "false";
+    }
 }

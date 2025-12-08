@@ -15,4 +15,8 @@ public class NotFilter implements Filter {
 
         return !property.matches(resource);
     }
+    @Override
+    public String toString() {
+        return "(NOT " + property.toString() + ")";
+    }
 }

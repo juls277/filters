@@ -1,7 +1,5 @@
 package org.example.comparison;
-
 import org.example.Filter;
-
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -22,5 +20,9 @@ public class RegexFilter implements Filter {
             return false;
         }
         return pattern.matcher(actual).matches();
+    }
+    @Override
+    public String toString() {
+        return property + " = /" + pattern + "/";
     }
 }

@@ -3,8 +3,8 @@ import java.util.Map;
 import org.example.Filter;
 
 public class EqualsFilter implements Filter {
-    private String field;
-    private String value;
+    private final String field;
+    private final String value;
     public EqualsFilter(String field, String value) {
         this.field = field;
         this.value = value;
@@ -17,5 +17,9 @@ public class EqualsFilter implements Filter {
             return false; // missing case
         }
         return actual.equalsIgnoreCase(value);
+    }
+    @Override
+    public String toString() {
+        return field + " == \"" + value + "\"";
     }
 }
