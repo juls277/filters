@@ -14,4 +14,11 @@ public class TrueFilterTest {
         Filter f = new TrueFilter();
         assertTrue(f.matches(Collections.emptyMap()));
     }
+    @Test
+    void toStringReturnsTRUE() {
+        Filter f = new TrueFilter();
+        assertEquals("true", f.toString());
+    }
+
+
 }

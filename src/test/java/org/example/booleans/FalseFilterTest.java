@@ -11,4 +11,10 @@ public class FalseFilterTest {
         Filter f = new FalseFilter();
         assertFalse(f.matches(Collections.emptyMap()));
     }
+    @Test
+    void toStringReturnsFALSE() {
+        Filter f = new FalseFilter();
+        assertEquals("false", f.toString());
+    }
+
 }

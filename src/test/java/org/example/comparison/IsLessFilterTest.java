@@ -50,4 +50,11 @@ class IsLessFilterTest {
         Filter f = new IsLessFilter("age", "30");
         assertFalse(f.matches(map));
     }
+
+    @Test
+    void toStringShowsLessThanExpression() {
+        Filter f = new IsLessFilter("age", "18");
+        assertEquals("age < 18", f.toString());
+    }
+
 }

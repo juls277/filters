@@ -29,4 +29,10 @@ public class AndFilterTest {
         Filter f = new AndFilter(new FalseFilter(), new FalseFilter());
         assertFalse(f.matches(Collections.emptyMap()));
     }
+    @Test
+    void toStringShowsAndExpression() {
+        Filter f = new AndFilter(new TrueFilter(), new FalseFilter());
+        assertEquals("(true AND false)", f.toString());
+    }
+
 }

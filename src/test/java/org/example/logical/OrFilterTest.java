@@ -10,22 +10,29 @@ import static org.junit.jupiter.api.Assertions.*;
 public class OrFilterTest {
     @Test
     //true || true
-    void trueAndTrueIsTrue() {
-        Filter f = new AndFilter(new TrueFilter(), new TrueFilter());
+    void trueOrTrueIsTrue() {
+        Filter f = new OrFilter(new TrueFilter(), new TrueFilter());
         assertTrue(f.matches(Collections.emptyMap()));
     }
 
     @Test
         //true || false
-    void trueAndFalseIsFalse() {
-        Filter f = new AndFilter(new TrueFilter(), new FalseFilter());
+    void trueOrFalseIsFalse() {
+        Filter f = new OrFilter(new TrueFilter(), new FalseFilter());
         assertTrue(f.matches(Collections.emptyMap()));
     }
 
     @Test
         //false || false
-    void falseAndFalseIsFalse() {
-        Filter f = new AndFilter(new FalseFilter(), new FalseFilter());
+    void falseOrFalseIsFalse() {
+        Filter f = new OrFilter(new FalseFilter(), new FalseFilter());
         assertFalse(f.matches(Collections.emptyMap()));
     }
+
+    @Test
+    void toStringShowsOrExpression() {
+        Filter f = new OrFilter(new TrueFilter(), new FalseFilter());
+        assertEquals("(true OR false)", f.toString());
+    }
+
 }

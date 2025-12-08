@@ -50,4 +50,11 @@ class IsGreaterFilterTest {
         Filter f = new isGreaterFilter("age", "30");
         assertFalse(f.matches(map));
     }
+
+    @Test
+    void toStringShowsGreaterThanExpression() {
+        Filter f = new isGreaterFilter("age", "30");
+        assertEquals("age > 30", f.toString());
+    }
+
 }

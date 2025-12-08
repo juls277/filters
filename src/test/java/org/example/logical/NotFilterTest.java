@@ -21,4 +21,11 @@ class NotFilterTest {
         Filter f = new NotFilter(new FalseFilter());
         assertTrue(f.matches(Collections.emptyMap()));
     }
+
+    @Test
+    void toStringShowsNotExpression() {
+        Filter f = new NotFilter(new TrueFilter());
+        assertEquals("(NOT true)", f.toString());
+    }
+
 }

@@ -32,4 +32,11 @@ class IsPresentTest {
         Filter f = new isPresent("field");
         assertFalse(f.matches(map));
     }
+
+    @Test
+    void toStringShowsPresentExpression() {
+        Filter f = new isPresent("email");
+        assertEquals("HAS(email)", f.toString());
+    }
+
 }

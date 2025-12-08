@@ -42,4 +42,11 @@ class RegexFilterTest {
         Filter f = new RegexFilter("email", ".*@example\\.com");
         assertFalse(f.matches(map));
     }
+
+    @Test
+    void toStringShowsRegexExpression() {
+        Filter f = new RegexFilter("email", ".*@example\\.com");
+        assertEquals("email = /.*@example\\.com/", f.toString());
+    }
+
 }

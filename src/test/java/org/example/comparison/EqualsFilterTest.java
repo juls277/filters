@@ -32,5 +32,12 @@ class EqualsFilterTest {
         Filter f = new EqualsFilter("field", "value");
         assertFalse(f.matches(map));
     }
+
+    @Test
+    void toStringShowsEqualsExpression() {
+        Filter f = new EqualsFilter("role", "admin");
+        assertEquals("role == \"admin\"", f.toString());
+    }
+
 }
 
