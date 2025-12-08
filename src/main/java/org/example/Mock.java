@@ -3,6 +3,7 @@ import org.example.comparison.*;
 import org.example.logical.*;
 import org.example.booleans.*;
 import java.util.Map;
+import org.example.visitor.*;
 
 public class Mock {
     public static void main (String[] args) {
@@ -31,14 +32,11 @@ public class Mock {
         );
         System.out.println(f);
 
-       /* Filter is_matches = new EqualsFilter("role", "ADMINISTRATOR");
-        System.out.println("Matches " + is_matches.matches(user));
-
-        Filter is_greater = new isGreaterFilter("age", "13");
-        System.out.println("Matches " + is_greater.matches(user));
-
-        Filter is_present = new isPresent("lastname");
-        System.out.println("Matches " + is_present.matches(user));*/
-
+        Filter complex_tree = new AndFilter(
+                new EqualsFilter("role", "admin"),
+                new OrFilter(new TrueFilter(), new NotFilter(new FalseFilter()))
+        );
+        int count = complex_tree.accept(new CountFilterVisitor());
+        System.out.println(count); // i expect output 6
     }
 }
